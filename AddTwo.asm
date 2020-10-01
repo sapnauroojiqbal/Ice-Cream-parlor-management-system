@@ -1,11 +1,11 @@
 ;This is a ICE-CREAM PARLOR management system
 INCLUDE Irvine32.Inc
-buffersize = 5000   ;for reading the files
+buffersize = 5000   ;specifying size for reading from the files
 .data
 filename1 byte "mainMENUE.txt",0   ;file for the main menu
-filename2 byte "ICE_CREAMmenu.txt",0  ;file for showing the flavors of ice cream
-filename3 byte "SHAKESmenu.txt",0   ;file for showing the flavors of shakes
-filename4 byte "SOFTdrinksMENUE.txt",0  ;file for showing the flavors of soft drinks
+filename2 byte "ICE_CREAMmenu.txt",0  ;file for showing the flavors of ice cream menu
+filename3 byte "SHAKESmenu.txt",0   ;file for showing the flavors of shakes menu
+filename4 byte "SOFTdrinksMENUE.txt",0  ;file for showing the flavors of soft drinks menu
 filehandle dword ?
 buffer byte buffersize dup(?)
 str1       byte"                                                   **********************************",0ah,0dh
@@ -22,7 +22,7 @@ str6 byte"     Tax included = 18%",0ah,0dh
       byte"     After including tax Total Bill:",0
 str7 byte"     Enter 1:To Continue!!",0ah,0dh
       byte"     Enter 2:To Exit!!",0ah,0dh,0
-str8 byte"     Your Order will be recieved in 10 minutes!! Thanks!!:",0ah,0dh,0
+str8 byte"     Thanks!! Your Order will be recieved in 10 minutes!!:",0ah,0dh,0
 arr1 dword 100,100,150,100   ;prices for ice-creams flavors
 arr2 dword 150,150,150,200,150   ;prices for shakes flavors
 arr3 dword 50,50,50,50,50    ;prices for the soft drinks
@@ -98,7 +98,7 @@ last:
 	 mul tax
 	 div percent
 	 add eax,bill     ;adding the tax
-	 mov edx,offset str6  ; telling that 18% tax is included
+	 mov edx,offset str6  ; telling that 18% tax is included in the total bill
 	 call writestring
 	 call writeint
 	 call crlf
